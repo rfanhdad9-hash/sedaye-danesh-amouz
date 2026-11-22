@@ -70,13 +70,39 @@ footer{text-align:center;color:#aab9cd;padding:25px;font-size:13px}
 
 <footer>ساخته شده توسط عرفان حداد</footer>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-document.getElementById("feedback").addEventListener("submit",function(e){
-e.preventDefault();
-document.getElementById("status").textContent=
-"ممنون از مشارکتت! این نسخه هنوز پیام را به شورای مدرسه ارسال نمی‌کند.";
-this.reset();
+const SUPABASE_URL = "https://cfnbjosedcfrvadwwdlt.supabase.co";
+const SUPABASE_KEY = "sb_publishable_pCfxtXM_XdX7ekwZWbwG7A_fmFXbOkO";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+document.getElementById("feedback").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const status = document.getElementById("status");
+  const grade = document.getElementById("grade").value;
+  const kind = document.getElementById("kind").value;
+  const message = document.getElementById("message").value.trim();
+
+  status.textContent = "در حال ارسال...";
+
+  const { error } = await db
+    .from("messages")
+    .insert([{ grade, kind, message }]);
+
+  if (error) {
+    status.textContent = "ارسال انجام نشد. دوباره تلاش کن.";
+    console.error(error);
+    return;
+  }
+
+  status.textContent = "پیامت با موفقیت ثبت شد!";
+  this.reset();
 });
 </script>
 </body>
