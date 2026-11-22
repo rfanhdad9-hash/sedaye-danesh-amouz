@@ -98,6 +98,7 @@ document.getElementById("feedback").addEventListener("submit", async function(e)
   if (error) {
     status.textContent = "ارسال انجام نشد. دوباره تلاش کن.";
     console.error(error);
+    alert(JSON.stringify(error));
     return;
   }
 
