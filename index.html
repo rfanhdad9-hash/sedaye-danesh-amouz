@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>صدای دانش‌آموز | مدرسه ادیب</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1425;color:#f5f5f5;font-family:Tahoma,Arial,sans-serif}
+main{max-width:760px;margin:35px auto;padding:18px}
+header{background:linear-gradient(120deg,#203b5e,#17243a);padding:30px;border-radius:22px;border:1px solid #405575}
+h1{color:#f4c76a;font-size:28px}
+header p{line-height:2;color:#d4deeb}
+.card{background:#152238;border:1px solid #34445d;padding:22px;border-radius:18px;margin-top:18px}
+label{display:block;margin:15px 0 8px}
+input,select,textarea{width:100%;padding:13px;border-radius:10px;border:1px solid #405575;background:#0c1728;color:white;font:inherit}
+textarea{min-height:130px}
+button{background:#f4c76a;color:#182235;border:0;padding:13px 20px;border-radius:10px;font-weight:bold;font-size:15px;margin-top:15px;cursor:pointer}
+.note{color:#aab9cd;font-size:12px;line-height:2}
+#status{color:#70d6d0;margin-top:12px}
+footer{text-align:center;color:#aab9cd;padding:25px;font-size:13px}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div>شورای دانش‌آموزی مدرسه ادیب</div>
+<h1>صدای دانش‌آموز</h1>
+<p>مدرسه بهتر، با شنیدن صدای همه ساخته می‌شود.<br>
+ایده‌ها، پیشنهادها و انتقادهای سازنده‌ات را با ما در میان بگذار.</p>
+</header>
+
+<section class="card">
+<h2>ثبت پیام ناشناس</h2>
+<p class="note">نام و شماره تماس لازم نیست؛ فقط پایه تحصیلی‌ات را انتخاب کن.</p>
+<form id="feedback">
+<label for="grade">پایه تحصیلی</label>
+<select id="grade" required>
+<option value="">انتخاب پایه</option>
+<option>هفتم</option>
+<option>هشتم</option>
+<option>نهم</option>
+</select>
+
+<label for="kind">موضوع پیام</label>
+<select id="kind">
+<option>پیشنهاد</option>
+<option>انتقاد سازنده</option>
+<option>درخواست</option>
+<option>ایده برای برنامه مدرسه</option>
+</select>
+
+<label for="message">متن پیام</label>
+<textarea id="message" maxlength="1200" required placeholder="نظرت را اینجا بنویس..."></textarea>
+
+<button type="submit">ثبت پیام</button>
+<div id="status"></div>
+</form>
+</section>
+
+<section class="card">
+<h2>قوانین استفاده</h2>
+<p class="note">
+۱. محترمانه و سازنده بنویسیم.<br>
+۲. اطلاعات شخصی خود یا دیگران را وارد نکنیم.<br>
+۳. برای موارد اضطراری مستقیماً به مسئول مدرسه اطلاع بدهیم.
+</p>
+</section>
+
+<footer>ساخته شده توسط عرفان حداد</footer>
+</main>
+
+<script>
+document.getElementById("feedback").addEventListener("submit",function(e){
+e.preventDefault();
+document.getElementById("status").textContent=
+"ممنون از مشارکتت! این نسخه هنوز پیام را به شورای مدرسه ارسال نمی‌کند.";
+this.reset();
+});
+</script>
+</body>
+</html>
